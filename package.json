@@ -1,0 +1,25 @@
+{
+  "name": "arbor-dashboard",
+  "version": "0.0.1",
+  "description": "A tool to create responsive dashboards with charts",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/AshleyBoyd11/arbor-dashboard-poc.git"
+  },
+  "keywords": [
+    "Dashboard",
+    "Reporting",
+    "Arbor",
+    "Charts"
+  ],
+  "author": "Ashley Boyd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AshleyBoyd11/arbor-dashboard-poc/issues"
+  },
+  "homepage": "https://github.com/AshleyBoyd11/arbor-dashboard-poc#readme"
+}
