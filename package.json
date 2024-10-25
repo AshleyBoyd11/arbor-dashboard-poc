@@ -21,5 +21,19 @@
   "bugs": {
     "url": "https://github.com/AshleyBoyd11/arbor-dashboard-poc/issues"
   },
-  "homepage": "https://github.com/AshleyBoyd11/arbor-dashboard-poc#readme"
+  "homepage": "https://github.com/AshleyBoyd11/arbor-dashboard-poc#readme",
+  "dependencies": {
+    "@nivo/bar": "^0.87.0",
+    "prettier": "^3.3.3",
+    "react": "^18.3.1",
+    "react-grid-layout": "^1.5.0",
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "eslint": "^9.13.0",
+    "eslint-plugin-react": "^7.37.1",
+    "globals": "^15.11.0",
+    "typescript-eslint": "^8.11.0"
+  }
 }

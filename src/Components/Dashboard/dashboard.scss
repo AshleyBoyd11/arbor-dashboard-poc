@@ -1,0 +1,24 @@
+.dashboard {
+    border: 2px grey solid;
+}
+
+.dashboard-item {
+    border: 1px grey solid;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.draggable-handle {
+    cursor: move;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 30px;
+    height: 30px;
+    z-index: 10;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(196, 196, 196);
+}
