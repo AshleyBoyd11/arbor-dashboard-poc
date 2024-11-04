@@ -1,58 +1,45 @@
-import GridLayout from 'react-grid-layout';
+import {Responsive, WidthProvider} from 'react-grid-layout';
 import React from 'react';
 import './dashboard.scss';
 import {BarChart} from '../Charts/BarChart';
-import {useState} from 'react';
 import {MoveIcon} from '../../Icons';
+
+const ResponsiveGridLayout = WidthProvider(Responsive);
 
 type DashboardProps = {
     layoutConfig: string;
 };
 
 export const Dashboard = ({layoutConfig}: DashboardProps) => {
-    const [viewHeight, setViewHeight] = useState(window.innerHeight);
-    const [viewWidth, setViewWidth] = useState(window.innerWidth);
-
-    console.log('height is', viewHeight);
-
-    window.onresize = () => {
-        setViewHeight(window.innerHeight);
-        setViewWidth(window.innerWidth);
-    };
     const layout = JSON.parse(layoutConfig);
+    const {filters} = layout;
+    const {chartLayout} = filters;
 
-    // onresize is doing nothing
-    const onResize = (layout, oldLayoutItem, layoutItem, placeholder) => {
-        // `oldLayoutItem` contains the state of the item before the resize.
-        // You can modify `layoutItem` to enforce constraints.
-        console.log('resizing');
-        if (layoutItem.h < 3 && layoutItem.w > 2) {
-            layoutItem.w = 2;
-            placeholder.w = 2;
-        }
-
-        if (layoutItem.h >= 3 && layoutItem.w < 2) {
-            layoutItem.w = 2;
-            placeholder.w = 2;
-        }
-    };
     return (
-        <GridLayout
+        <ResponsiveGridLayout
             className="dashboard"
-            //layout={layout}
-            cols={12}
+            breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
+            cols={{lg: 12, md: 10, sm: 6, xs: 4, xxs: 2}}
             rowHeight={140}
             maxRows={8} //  maxRows is overwritten by the layout to fit the elements, it restricts when dragging elements to an extra row.
             // it's a direct measurement of how many 'h' values from an item can fit on top of eachother
-            width={viewWidth}
-            height={viewHeight}
             maxWidth={1900}
-            onResize={onResize}
-            isrResizable={true}
-            //droppingItem={{i: 'a', w: 2, h: 2}}
+            isResizable={false}
             draggableHandle=".draggable-handle"
+            resizeHandles={['s', 'w', 'e', 'n', 'sw', 'nw', 'se', 'ne']}
+            autosize={false}
+            compactType="vertical"
         >
-            {layout.map((item) => {
+            {filters && (
+                <div
+                    className="dashboard-filter-panel"
+                    data-grid={filters.filterLayout}
+                    key={filters.filterName}
+                >
+                    this is a filter
+                </div>
+            )}
+            {chartLayout.map((item) => {
                 return (
                     <div
                         className="dashboard-item"
@@ -64,17 +51,24 @@ export const Dashboard = ({layoutConfig}: DashboardProps) => {
                         </div>
 
                         {item.chartType === 'bar' ? (
-                            <BarChart
-                                data={
-                                    item.dataAlreadyFormatted ? item.data : []
-                                }
-                            />
+                            <BarChart dataUrl={item.dataUrl} />
                         ) : (
                             item.i
                         )}
                     </div>
                 );
             })}
-        </GridLayout>
+            {filters.filters && (
+                <div
+                    data-grid={{i: 'subdash', x: 0, y: 4, w: 6, h: 4}}
+                    key="subdash"
+                >
+                    <div className="draggable-handle">
+                        <MoveIcon />
+                    </div>
+                    <Dashboard layoutConfig={JSON.stringify(filters)} />
+                </div>
+            )}
+        </ResponsiveGridLayout>
     );
 };

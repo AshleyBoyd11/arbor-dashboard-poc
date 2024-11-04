@@ -1,10 +1,13 @@
-import {BarDatum, ResponsiveBar} from '@nivo/bar';
+import {ResponsiveBar} from '@nivo/bar';
 import React from 'react';
 import {transformChartData} from './transformChartData';
 type BarChartProps = {
-    data: BarDatum[]; // this will be transformed after being passed so type will change
+    dataUrl: string;
 };
-export const BarChart = ({data}: BarChartProps) => {
+export const BarChart = ({dataUrl}: BarChartProps) => {
+    // TODO: replace this with a fetch
+    const data = dataUrl;
+    // transformChartdata is returning the same thing right now
     const {transformedData, query, annotation} = transformChartData(data);
     const keys = query.measures;
     const indexBy = query.dimensions[0];
