@@ -12,7 +12,6 @@ export const BarChart = ({dataUrl}: BarChartProps) => {
         data,
         'bar',
     );
-    console.log(transformChartData(data, 'line'));
     const keys = query.measures;
     const indexBy = query.dimensions[0];
     const xAxisLabel = annotation.dimensions[indexBy].title;
