@@ -36,7 +36,27 @@ export const Dashboard = ({layoutConfig}: DashboardProps) => {
                     data-grid={filters.filterLayout}
                     key={filters.filterName}
                 >
-                    this is a filter
+                    <span>
+                        <input type={'radio'} /> Year 7
+                    </span>
+                    <span>
+                        <input type={'radio'} /> Year 8
+                    </span>
+                    <span>
+                        <input type={'radio'} /> Year 9
+                    </span>
+                    <span>
+                        <input type={'radio'} /> Year 10
+                    </span>
+                    <span>
+                        <input type={'radio'} /> Year 11
+                    </span>
+                    <span>
+                        <input type={'radio'} /> Male
+                    </span>
+                    <span>
+                        <input type={'radio'} /> Female
+                    </span>
                 </div>
             )}
             {chartLayout.map((item) => {
@@ -60,7 +80,7 @@ export const Dashboard = ({layoutConfig}: DashboardProps) => {
             })}
             {filters.filters && (
                 <div
-                    data-grid={{i: 'subdash', x: 0, y: 4, w: 6, h: 4}}
+                    data-grid={{i: 'subdash', x: 0, y: 4, w: 8, h: 1}}
                     key="subdash"
                 >
                     <div className="draggable-handle">
