@@ -8,7 +8,10 @@ export const BarChart = ({dataUrl}: BarChartProps) => {
     // TODO: replace this with a fetch
     const data = dataUrl;
     // transformChartdata is returning the same thing right now
-    const {transformedData, query, annotation} = transformChartData(data);
+    const {transformedData, query, annotation} = transformChartData(
+        data,
+        'bar',
+    );
     const keys = query.measures;
     const indexBy = query.dimensions[0];
     const xAxisLabel = annotation.dimensions[indexBy].title;

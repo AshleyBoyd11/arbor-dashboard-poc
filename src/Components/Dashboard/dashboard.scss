@@ -1,5 +1,4 @@
 .dashboard {
-    border: 2px grey solid;
     width: 100%;
     height: 100%;
 }
@@ -12,7 +11,8 @@
 
 .dashboard-filter-panel {
     width: 100%;
-    background-color: blue;
+    border: 2px solid grey;
+    border-radius: 4px;
 }
 
 .draggable-handle {
