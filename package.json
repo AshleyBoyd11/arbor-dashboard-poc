@@ -24,6 +24,7 @@
     "homepage": "https://github.com/AshleyBoyd11/arbor-dashboard-poc#readme",
     "dependencies": {
         "@nivo/bar": "^0.87.0",
+        "@nivo/heatmap": "^0.88.0",
         "@nivo/line": "^0.87.0",
         "react": "^18.3.1",
         "react-grid-layout": "^1.5.0",
