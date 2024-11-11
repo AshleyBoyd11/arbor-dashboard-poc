@@ -3,6 +3,8 @@ import React from 'react';
 import './dashboard.scss';
 import {BarChart} from '../Charts/BarChart';
 import {MoveIcon} from '../../Icons';
+import {LineChart} from '../Charts/LineChart';
+import {HeatMap} from '../Charts/HeatMap';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -70,15 +72,20 @@ export const Dashboard = ({layoutConfig}: DashboardProps) => {
                             <MoveIcon />
                         </div>
 
-                        {item.chartType === 'bar' ? (
+                        {item.chartType === 'bar' && (
                             <BarChart dataUrl={item.dataUrl} />
-                        ) : (
-                            item.i
+                        )}
+                        {item.chartType === 'line' && (
+                            <LineChart dataUrl={item.dataUrl} />
+                        )}
+                        {item.chartType === 'heat-map' && (
+                            <HeatMap dataUrl={item.dataUrl} />
                         )}
                     </div>
                 );
             })}
             {filters.filters && (
+                // TODO: the size of the dashboard should be set by looping through the chart layout
                 <div
                     data-grid={{i: 'subdash', x: 0, y: 4, w: 8, h: 1}}
                     key="subdash"
