@@ -1,4 +1,5 @@
 import {BarDatum} from '@nivo/bar';
+import {HeatMapDatum, HeatMapSerie} from '@nivo/heatmap';
 
 type Query = {
     limit: number;
@@ -79,8 +80,6 @@ type LineData = {
         y: number | string | Date;
     }>;
 };
-// line and heatmap data are the same but keeping seperate for clarity
-type HeatMapData = LineData;
 
 export const transformChartData = <T extends Data>(
     data: ApiResponse<T>,
@@ -210,7 +209,10 @@ export const transformChartData = <T extends Data>(
     // having two entries for a dimensions e.g. 2 abscence statistics for year 1 will only show the first one.
     // it breaks when it hits the second entry
 
-    let transformedData: BarDatum[] | LineData[] | HeatMapData[] = [];
+    let transformedData:
+        | HeatMapSerie<HeatMapDatum, BarDatum>[]
+        | BarDatum[]
+        | LineData[] = [];
 
     switch (chartType) {
         case 'bar':
